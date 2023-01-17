@@ -10,14 +10,12 @@ export const createEssayCategory = /* GraphQL */ `
     createEssayCategory(input: $input, condition: $condition) {
       id
       name
-      temp
       essays {
         items {
           id
           name
           imageUri
           audioUri
-          temp
           essayCategoryId
           authorId
           createdAt
@@ -38,14 +36,12 @@ export const updateEssayCategory = /* GraphQL */ `
     updateEssayCategory(input: $input, condition: $condition) {
       id
       name
-      temp
       essays {
         items {
           id
           name
           imageUri
           audioUri
-          temp
           essayCategoryId
           authorId
           createdAt
@@ -66,14 +62,12 @@ export const deleteEssayCategory = /* GraphQL */ `
     deleteEssayCategory(input: $input, condition: $condition) {
       id
       name
-      temp
       essays {
         items {
           id
           name
           imageUri
           audioUri
-          temp
           essayCategoryId
           authorId
           createdAt
@@ -101,7 +95,6 @@ export const createAuthor = /* GraphQL */ `
           name
           imageUri
           audioUri
-          temp
           essayCategoryId
           authorId
           createdAt
@@ -129,7 +122,6 @@ export const updateAuthor = /* GraphQL */ `
           name
           imageUri
           audioUri
-          temp
           essayCategoryId
           authorId
           createdAt
@@ -157,7 +149,6 @@ export const deleteAuthor = /* GraphQL */ `
           name
           imageUri
           audioUri
-          temp
           essayCategoryId
           authorId
           createdAt
@@ -180,12 +171,10 @@ export const createEssay = /* GraphQL */ `
       name
       imageUri
       audioUri
-      temp
       essayCategoryId
       essayCategory {
         id
         name
-        temp
         essays {
           nextToken
         }
@@ -218,12 +207,10 @@ export const updateEssay = /* GraphQL */ `
       name
       imageUri
       audioUri
-      temp
       essayCategoryId
       essayCategory {
         id
         name
-        temp
         essays {
           nextToken
         }
@@ -256,12 +243,10 @@ export const deleteEssay = /* GraphQL */ `
       name
       imageUri
       audioUri
-      temp
       essayCategoryId
       essayCategory {
         id
         name
-        temp
         essays {
           nextToken
         }

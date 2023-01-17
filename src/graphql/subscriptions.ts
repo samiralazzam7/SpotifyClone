@@ -7,14 +7,12 @@ export const onCreateEssayCategory = /* GraphQL */ `
     onCreateEssayCategory {
       id
       name
-      temp
       essays {
         items {
           id
           name
           imageUri
           audioUri
-          temp
           essayCategoryId
           authorId
           createdAt
@@ -32,14 +30,12 @@ export const onUpdateEssayCategory = /* GraphQL */ `
     onUpdateEssayCategory {
       id
       name
-      temp
       essays {
         items {
           id
           name
           imageUri
           audioUri
-          temp
           essayCategoryId
           authorId
           createdAt
@@ -57,14 +53,12 @@ export const onDeleteEssayCategory = /* GraphQL */ `
     onDeleteEssayCategory {
       id
       name
-      temp
       essays {
         items {
           id
           name
           imageUri
           audioUri
-          temp
           essayCategoryId
           authorId
           createdAt
@@ -89,7 +83,6 @@ export const onCreateAuthor = /* GraphQL */ `
           name
           imageUri
           audioUri
-          temp
           essayCategoryId
           authorId
           createdAt
@@ -114,7 +107,6 @@ export const onUpdateAuthor = /* GraphQL */ `
           name
           imageUri
           audioUri
-          temp
           essayCategoryId
           authorId
           createdAt
@@ -139,7 +131,6 @@ export const onDeleteAuthor = /* GraphQL */ `
           name
           imageUri
           audioUri
-          temp
           essayCategoryId
           authorId
           createdAt
@@ -159,12 +150,10 @@ export const onCreateEssay = /* GraphQL */ `
       name
       imageUri
       audioUri
-      temp
       essayCategoryId
       essayCategory {
         id
         name
-        temp
         essays {
           nextToken
         }
@@ -194,12 +183,10 @@ export const onUpdateEssay = /* GraphQL */ `
       name
       imageUri
       audioUri
-      temp
       essayCategoryId
       essayCategory {
         id
         name
-        temp
         essays {
           nextToken
         }
@@ -229,12 +216,10 @@ export const onDeleteEssay = /* GraphQL */ `
       name
       imageUri
       audioUri
-      temp
       essayCategoryId
       essayCategory {
         id
         name
-        temp
         essays {
           nextToken
         }

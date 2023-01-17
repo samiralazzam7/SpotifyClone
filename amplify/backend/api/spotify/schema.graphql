@@ -1,7 +1,6 @@
 type EssayCategory @model @key(name: "byEssayCategoryName", fields: ["name"]) {
   id: ID!
   name: String!
-  temp: String!
   essays: [Essay] @connection(keyName: "byEssayCategory", fields: ["id"])
 }
 
@@ -17,7 +16,6 @@ type Essay @model @key(name: "byEssayCategory", fields: ["essayCategoryId"]) @ke
   name: String!
   imageUri: String!
   audioUri: String!
-  temp: String!
 
   essayCategoryId: ID!
   essayCategory: EssayCategory @connection(fields: ["essayCategoryId"])

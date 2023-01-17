@@ -5,12 +5,10 @@
 export type CreateEssayCategoryInput = {
   id?: string | null,
   name: string,
-  temp: string,
 };
 
 export type ModelEssayCategoryConditionInput = {
   name?: ModelStringInput | null,
-  temp?: ModelStringInput | null,
   and?: Array< ModelEssayCategoryConditionInput | null > | null,
   or?: Array< ModelEssayCategoryConditionInput | null > | null,
   not?: ModelEssayCategoryConditionInput | null,
@@ -60,7 +58,6 @@ export type EssayCategory = {
   __typename: "EssayCategory",
   id: string,
   name: string,
-  temp: string,
   essays?: ModelEssayConnection | null,
   createdAt: string,
   updatedAt: string,
@@ -78,7 +75,6 @@ export type Essay = {
   name: string,
   imageUri: string,
   audioUri: string,
-  temp: string,
   essayCategoryId: string,
   essayCategory?: EssayCategory | null,
   authorId: string,
@@ -100,7 +96,6 @@ export type Author = {
 export type UpdateEssayCategoryInput = {
   id: string,
   name?: string | null,
-  temp?: string | null,
 };
 
 export type DeleteEssayCategoryInput = {
@@ -136,7 +131,6 @@ export type CreateEssayInput = {
   name: string,
   imageUri: string,
   audioUri: string,
-  temp: string,
   essayCategoryId: string,
   authorId: string,
 };
@@ -145,7 +139,6 @@ export type ModelEssayConditionInput = {
   name?: ModelStringInput | null,
   imageUri?: ModelStringInput | null,
   audioUri?: ModelStringInput | null,
-  temp?: ModelStringInput | null,
   essayCategoryId?: ModelIDInput | null,
   authorId?: ModelIDInput | null,
   and?: Array< ModelEssayConditionInput | null > | null,
@@ -174,7 +167,6 @@ export type UpdateEssayInput = {
   name?: string | null,
   imageUri?: string | null,
   audioUri?: string | null,
-  temp?: string | null,
   essayCategoryId?: string | null,
   authorId?: string | null,
 };
@@ -186,7 +178,6 @@ export type DeleteEssayInput = {
 export type ModelEssayCategoryFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
-  temp?: ModelStringInput | null,
   and?: Array< ModelEssayCategoryFilterInput | null > | null,
   or?: Array< ModelEssayCategoryFilterInput | null > | null,
   not?: ModelEssayCategoryFilterInput | null,
@@ -218,7 +209,6 @@ export type ModelEssayFilterInput = {
   name?: ModelStringInput | null,
   imageUri?: ModelStringInput | null,
   audioUri?: ModelStringInput | null,
-  temp?: ModelStringInput | null,
   essayCategoryId?: ModelIDInput | null,
   authorId?: ModelIDInput | null,
   and?: Array< ModelEssayFilterInput | null > | null,
@@ -236,7 +226,6 @@ export type CreateEssayCategoryMutation = {
     __typename: "EssayCategory",
     id: string,
     name: string,
-    temp: string,
     essays?:  {
       __typename: "ModelEssayConnection",
       items:  Array< {
@@ -245,7 +234,6 @@ export type CreateEssayCategoryMutation = {
         name: string,
         imageUri: string,
         audioUri: string,
-        temp: string,
         essayCategoryId: string,
         authorId: string,
         createdAt: string,
@@ -268,7 +256,6 @@ export type UpdateEssayCategoryMutation = {
     __typename: "EssayCategory",
     id: string,
     name: string,
-    temp: string,
     essays?:  {
       __typename: "ModelEssayConnection",
       items:  Array< {
@@ -277,7 +264,6 @@ export type UpdateEssayCategoryMutation = {
         name: string,
         imageUri: string,
         audioUri: string,
-        temp: string,
         essayCategoryId: string,
         authorId: string,
         createdAt: string,
@@ -300,7 +286,6 @@ export type DeleteEssayCategoryMutation = {
     __typename: "EssayCategory",
     id: string,
     name: string,
-    temp: string,
     essays?:  {
       __typename: "ModelEssayConnection",
       items:  Array< {
@@ -309,7 +294,6 @@ export type DeleteEssayCategoryMutation = {
         name: string,
         imageUri: string,
         audioUri: string,
-        temp: string,
         essayCategoryId: string,
         authorId: string,
         createdAt: string,
@@ -341,7 +325,6 @@ export type CreateAuthorMutation = {
         name: string,
         imageUri: string,
         audioUri: string,
-        temp: string,
         essayCategoryId: string,
         authorId: string,
         createdAt: string,
@@ -373,7 +356,6 @@ export type UpdateAuthorMutation = {
         name: string,
         imageUri: string,
         audioUri: string,
-        temp: string,
         essayCategoryId: string,
         authorId: string,
         createdAt: string,
@@ -405,7 +387,6 @@ export type DeleteAuthorMutation = {
         name: string,
         imageUri: string,
         audioUri: string,
-        temp: string,
         essayCategoryId: string,
         authorId: string,
         createdAt: string,
@@ -430,13 +411,11 @@ export type CreateEssayMutation = {
     name: string,
     imageUri: string,
     audioUri: string,
-    temp: string,
     essayCategoryId: string,
     essayCategory?:  {
       __typename: "EssayCategory",
       id: string,
       name: string,
-      temp: string,
       essays?:  {
         __typename: "ModelEssayConnection",
         nextToken?: string | null,
@@ -474,13 +453,11 @@ export type UpdateEssayMutation = {
     name: string,
     imageUri: string,
     audioUri: string,
-    temp: string,
     essayCategoryId: string,
     essayCategory?:  {
       __typename: "EssayCategory",
       id: string,
       name: string,
-      temp: string,
       essays?:  {
         __typename: "ModelEssayConnection",
         nextToken?: string | null,
@@ -518,13 +495,11 @@ export type DeleteEssayMutation = {
     name: string,
     imageUri: string,
     audioUri: string,
-    temp: string,
     essayCategoryId: string,
     essayCategory?:  {
       __typename: "EssayCategory",
       id: string,
       name: string,
-      temp: string,
       essays?:  {
         __typename: "ModelEssayConnection",
         nextToken?: string | null,
@@ -559,7 +534,6 @@ export type GetEssayCategoryQuery = {
     __typename: "EssayCategory",
     id: string,
     name: string,
-    temp: string,
     essays?:  {
       __typename: "ModelEssayConnection",
       items:  Array< {
@@ -568,7 +542,6 @@ export type GetEssayCategoryQuery = {
         name: string,
         imageUri: string,
         audioUri: string,
-        temp: string,
         essayCategoryId: string,
         authorId: string,
         createdAt: string,
@@ -594,7 +567,6 @@ export type ListEssayCategorysQuery = {
       __typename: "EssayCategory",
       id: string,
       name: string,
-      temp: string,
       essays?:  {
         __typename: "ModelEssayConnection",
         nextToken?: string | null,
@@ -624,7 +596,6 @@ export type GetAuthorQuery = {
         name: string,
         imageUri: string,
         audioUri: string,
-        temp: string,
         essayCategoryId: string,
         authorId: string,
         createdAt: string,
@@ -673,13 +644,11 @@ export type GetEssayQuery = {
     name: string,
     imageUri: string,
     audioUri: string,
-    temp: string,
     essayCategoryId: string,
     essayCategory?:  {
       __typename: "EssayCategory",
       id: string,
       name: string,
-      temp: string,
       essays?:  {
         __typename: "ModelEssayConnection",
         nextToken?: string | null,
@@ -720,13 +689,11 @@ export type ListEssaysQuery = {
       name: string,
       imageUri: string,
       audioUri: string,
-      temp: string,
       essayCategoryId: string,
       essayCategory?:  {
         __typename: "EssayCategory",
         id: string,
         name: string,
-        temp: string,
         createdAt: string,
         updatedAt: string,
       } | null,
@@ -751,7 +718,6 @@ export type OnCreateEssayCategorySubscription = {
     __typename: "EssayCategory",
     id: string,
     name: string,
-    temp: string,
     essays?:  {
       __typename: "ModelEssayConnection",
       items:  Array< {
@@ -760,7 +726,6 @@ export type OnCreateEssayCategorySubscription = {
         name: string,
         imageUri: string,
         audioUri: string,
-        temp: string,
         essayCategoryId: string,
         authorId: string,
         createdAt: string,
@@ -778,7 +743,6 @@ export type OnUpdateEssayCategorySubscription = {
     __typename: "EssayCategory",
     id: string,
     name: string,
-    temp: string,
     essays?:  {
       __typename: "ModelEssayConnection",
       items:  Array< {
@@ -787,7 +751,6 @@ export type OnUpdateEssayCategorySubscription = {
         name: string,
         imageUri: string,
         audioUri: string,
-        temp: string,
         essayCategoryId: string,
         authorId: string,
         createdAt: string,
@@ -805,7 +768,6 @@ export type OnDeleteEssayCategorySubscription = {
     __typename: "EssayCategory",
     id: string,
     name: string,
-    temp: string,
     essays?:  {
       __typename: "ModelEssayConnection",
       items:  Array< {
@@ -814,7 +776,6 @@ export type OnDeleteEssayCategorySubscription = {
         name: string,
         imageUri: string,
         audioUri: string,
-        temp: string,
         essayCategoryId: string,
         authorId: string,
         createdAt: string,
@@ -841,7 +802,6 @@ export type OnCreateAuthorSubscription = {
         name: string,
         imageUri: string,
         audioUri: string,
-        temp: string,
         essayCategoryId: string,
         authorId: string,
         createdAt: string,
@@ -868,7 +828,6 @@ export type OnUpdateAuthorSubscription = {
         name: string,
         imageUri: string,
         audioUri: string,
-        temp: string,
         essayCategoryId: string,
         authorId: string,
         createdAt: string,
@@ -895,7 +854,6 @@ export type OnDeleteAuthorSubscription = {
         name: string,
         imageUri: string,
         audioUri: string,
-        temp: string,
         essayCategoryId: string,
         authorId: string,
         createdAt: string,
@@ -915,13 +873,11 @@ export type OnCreateEssaySubscription = {
     name: string,
     imageUri: string,
     audioUri: string,
-    temp: string,
     essayCategoryId: string,
     essayCategory?:  {
       __typename: "EssayCategory",
       id: string,
       name: string,
-      temp: string,
       essays?:  {
         __typename: "ModelEssayConnection",
         nextToken?: string | null,
@@ -954,13 +910,11 @@ export type OnUpdateEssaySubscription = {
     name: string,
     imageUri: string,
     audioUri: string,
-    temp: string,
     essayCategoryId: string,
     essayCategory?:  {
       __typename: "EssayCategory",
       id: string,
       name: string,
-      temp: string,
       essays?:  {
         __typename: "ModelEssayConnection",
         nextToken?: string | null,
@@ -993,13 +947,11 @@ export type OnDeleteEssaySubscription = {
     name: string,
     imageUri: string,
     audioUri: string,
-    temp: string,
     essayCategoryId: string,
     essayCategory?:  {
       __typename: "EssayCategory",
       id: string,
       name: string,
-      temp: string,
       essays?:  {
         __typename: "ModelEssayConnection",
         nextToken?: string | null,

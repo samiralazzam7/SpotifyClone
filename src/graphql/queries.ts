@@ -7,23 +7,17 @@ export const getEssayCategory = /* GraphQL */ `
     getEssayCategory(id: $id) {
       id
       name
-      temp
       essays {
         items {
           id
           name
           imageUri
           audioUri
-          temp
           essayCategoryId
           authorId
-          createdAt
-          updatedAt
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -37,17 +31,14 @@ export const listEssayCategorys = /* GraphQL */ `
       items {
         id
         name
-        temp
         essays {
-          nextToken
           items {
             id
             imageUri
             authorId
           }
-        }
-        createdAt
-        updatedAt
+          nextToken
+        }  
       }
       nextToken
     }
@@ -65,16 +56,11 @@ export const getAuthor = /* GraphQL */ `
           name
           imageUri
           audioUri
-          temp
           essayCategoryId
           authorId
-          createdAt
-          updatedAt
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -92,8 +78,6 @@ export const listAuthors = /* GraphQL */ `
         essays {
           nextToken
         }
-        createdAt
-        updatedAt
       }
       nextToken
     }
@@ -106,17 +90,13 @@ export const getEssay = /* GraphQL */ `
       name
       imageUri
       audioUri
-      temp
       essayCategoryId
       essayCategory {
         id
         name
-        temp
         essays {
           nextToken
         }
-        createdAt
-        updatedAt
       }
       authorId
       author {
@@ -126,11 +106,7 @@ export const getEssay = /* GraphQL */ `
         essays {
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -146,25 +122,17 @@ export const listEssays = /* GraphQL */ `
         name
         imageUri
         audioUri
-        temp
         essayCategoryId
         essayCategory {
           id
           name
-          temp
-          createdAt
-          updatedAt
         }
         authorId
         author {
           id
           name
           imageUri
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       nextToken
     }
