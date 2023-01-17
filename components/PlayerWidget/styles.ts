@@ -36,13 +36,13 @@ const styles = StyleSheet.create({
     width: 100,
     justifyContent: 'space-around'
   },
-  title: {
+  name: {
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
     margin: 10,
   },
-  artist: {
+  author: {
     color: 'lightgray',
     fontSize: 18,
   }

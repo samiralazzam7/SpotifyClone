@@ -4,34 +4,34 @@ import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { API, graphqlOperation } from 'aws-amplify';
 
 import styles from './styles';
-import {Song} from "../../types";
+import {Essay} from "../../types";
 import {Sound} from "expo-av/build/Audio/Sound";
 
 import { AppContext } from '../../AppContext';
-import {getSong} from "../../src/graphql/queries";
+import {getEssay} from "../../src/graphql/queries";
 
 const PlayerWidget = () => {
 
-  const [song, setSong] = useState(null);
+  const [essay, setEssay] = useState(null);
   const [sound, setSound] = useState<Sound|null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [duration, setDuration] = useState<number|null>(null);
   const [position, setPosition] = useState<number|null>(null);
 
-  const { songId } = useContext(AppContext);
+  const { essayId } = useContext(AppContext);
 
   useEffect(() => {
-    const fetchSong = async () => {
+    const fetchEssay = async () => {
       try {
-        const data = await API.graphql(graphqlOperation(getSong, { id: songId }))
-        setSong(data.data.getSong);
+        const data = await API.graphql(graphqlOperation(getEssay, { id: essayId }))
+        setEssay(data.data.getEssay);
       } catch (e) {
         console.log(e);
       }
     }
 
-    fetchSong();
-  }, [songId])
+    fetchEssay();
+  }, [essayId])
 
   const onPlaybackStatusUpdate = (status) => {
     setIsPlaying(status.isPlaying);
@@ -39,13 +39,13 @@ const PlayerWidget = () => {
     setPosition(status.positionMillis);
   }
 
-  const playCurrentSong = async () => {
+  const playCurrentEssay = async () => {
     if (sound) {
       await sound.unloadAsync();
     }
 
     const { sound: newSound } = await Sound.createAsync(
-      { uri: song.uri },
+      { uri: essay.audioUri },
       { shouldPlay: isPlaying },
       onPlaybackStatusUpdate
     )
@@ -54,10 +54,10 @@ const PlayerWidget = () => {
   }
 
   useEffect(() => {
-    if (song) {
-      playCurrentSong();
+    if (essay) {
+      playCurrentEssay();
     }
-  }, [song])
+  }, [essay])
 
   const onPlayPausePress = async () => {
     if (!sound) {
@@ -78,7 +78,7 @@ const PlayerWidget = () => {
     return (position / duration) * 100;
   }
 
-  if (!song) {
+  if (!essay) {
     return null;
   }
 
@@ -86,11 +86,11 @@ const PlayerWidget = () => {
     <View style={styles.container}>
       <View style={[styles.progress, { width: `${getProgress()}%`}]} />
       <View style={styles.row}>
-        <Image source={{ uri: song.imageUri }} style={styles.image} />
+        <Image source={{ uri: essay.imageUri }} style={styles.image} />
         <View style={styles.rightContainer}>
           <View style={styles.nameContainer}>
-            <Text style={styles.title}>{song.title}</Text>
-            <Text style={styles.artist}>{song.artist}</Text>
+            <Text style={styles.name}>{essay.name}</Text>
+            <Text style={styles.author}>{essay.authorId}</Text>
           </View>
 
           <View style={styles.iconsContainer}>

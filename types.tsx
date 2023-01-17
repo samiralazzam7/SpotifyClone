@@ -10,25 +10,29 @@ export type BottomTabParamList = {
 
 export type TabOneParamList = {
   TabOneScreen: undefined;
-  AlbumScreen: undefined;
+  AuthorScreen: undefined;
 };
 
 export type TabTwoParamList = {
   TabTwoScreen: undefined;
 };
 
-export type Album = {
+export type Essay = {
   id: string;
   name: string;
-  by: string;
-  numberOfLikes: number;
   imageUri: string;
-  artistsHeadline: string;
+  audioUri: string;
+  essayCategoryId: string;
+  authorId: string;
 }
 
-export type Song = {
-  id: string,
-  imageUri: string,
-  title: string,
-  artist: string,
+export type Author = {
+  id: string;
+  imageUri: string;
+  name: string;
+}
+
+export type Category = {
+  id: string;
+  name: string;
 }

@@ -9,7 +9,6 @@ type Author @model @key(name: "byAuthorName", fields: ["name"]) {
   id: ID!
   name: String!
   imageUri: String!
-  temp: String!
   essays: [Essay] @connection(keyName: "byAuthor", fields: ["id"])
 }
 

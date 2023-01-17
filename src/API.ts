@@ -92,7 +92,6 @@ export type Author = {
   id: string,
   name: string,
   imageUri: string,
-  temp: string,
   essays?: ModelEssayConnection | null,
   createdAt: string,
   updatedAt: string,
@@ -112,13 +111,11 @@ export type CreateAuthorInput = {
   id?: string | null,
   name: string,
   imageUri: string,
-  temp: string,
 };
 
 export type ModelAuthorConditionInput = {
   name?: ModelStringInput | null,
   imageUri?: ModelStringInput | null,
-  temp?: ModelStringInput | null,
   and?: Array< ModelAuthorConditionInput | null > | null,
   or?: Array< ModelAuthorConditionInput | null > | null,
   not?: ModelAuthorConditionInput | null,
@@ -128,7 +125,6 @@ export type UpdateAuthorInput = {
   id: string,
   name?: string | null,
   imageUri?: string | null,
-  temp?: string | null,
 };
 
 export type DeleteAuthorInput = {
@@ -206,7 +202,6 @@ export type ModelAuthorFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
   imageUri?: ModelStringInput | null,
-  temp?: ModelStringInput | null,
   and?: Array< ModelAuthorFilterInput | null > | null,
   or?: Array< ModelAuthorFilterInput | null > | null,
   not?: ModelAuthorFilterInput | null,
@@ -338,7 +333,6 @@ export type CreateAuthorMutation = {
     id: string,
     name: string,
     imageUri: string,
-    temp: string,
     essays?:  {
       __typename: "ModelEssayConnection",
       items:  Array< {
@@ -371,7 +365,6 @@ export type UpdateAuthorMutation = {
     id: string,
     name: string,
     imageUri: string,
-    temp: string,
     essays?:  {
       __typename: "ModelEssayConnection",
       items:  Array< {
@@ -404,7 +397,6 @@ export type DeleteAuthorMutation = {
     id: string,
     name: string,
     imageUri: string,
-    temp: string,
     essays?:  {
       __typename: "ModelEssayConnection",
       items:  Array< {
@@ -458,7 +450,6 @@ export type CreateEssayMutation = {
       id: string,
       name: string,
       imageUri: string,
-      temp: string,
       essays?:  {
         __typename: "ModelEssayConnection",
         nextToken?: string | null,
@@ -503,7 +494,6 @@ export type UpdateEssayMutation = {
       id: string,
       name: string,
       imageUri: string,
-      temp: string,
       essays?:  {
         __typename: "ModelEssayConnection",
         nextToken?: string | null,
@@ -548,7 +538,6 @@ export type DeleteEssayMutation = {
       id: string,
       name: string,
       imageUri: string,
-      temp: string,
       essays?:  {
         __typename: "ModelEssayConnection",
         nextToken?: string | null,
@@ -627,7 +616,6 @@ export type GetAuthorQuery = {
     id: string,
     name: string,
     imageUri: string,
-    temp: string,
     essays?:  {
       __typename: "ModelEssayConnection",
       items:  Array< {
@@ -663,7 +651,6 @@ export type ListAuthorsQuery = {
       id: string,
       name: string,
       imageUri: string,
-      temp: string,
       essays?:  {
         __typename: "ModelEssayConnection",
         nextToken?: string | null,
@@ -706,7 +693,6 @@ export type GetEssayQuery = {
       id: string,
       name: string,
       imageUri: string,
-      temp: string,
       essays?:  {
         __typename: "ModelEssayConnection",
         nextToken?: string | null,
@@ -750,7 +736,6 @@ export type ListEssaysQuery = {
         id: string,
         name: string,
         imageUri: string,
-        temp: string,
         createdAt: string,
         updatedAt: string,
       } | null,
@@ -848,7 +833,6 @@ export type OnCreateAuthorSubscription = {
     id: string,
     name: string,
     imageUri: string,
-    temp: string,
     essays?:  {
       __typename: "ModelEssayConnection",
       items:  Array< {
@@ -876,7 +860,6 @@ export type OnUpdateAuthorSubscription = {
     id: string,
     name: string,
     imageUri: string,
-    temp: string,
     essays?:  {
       __typename: "ModelEssayConnection",
       items:  Array< {
@@ -904,7 +887,6 @@ export type OnDeleteAuthorSubscription = {
     id: string,
     name: string,
     imageUri: string,
-    temp: string,
     essays?:  {
       __typename: "ModelEssayConnection",
       items:  Array< {
@@ -953,7 +935,6 @@ export type OnCreateEssaySubscription = {
       id: string,
       name: string,
       imageUri: string,
-      temp: string,
       essays?:  {
         __typename: "ModelEssayConnection",
         nextToken?: string | null,
@@ -993,7 +974,6 @@ export type OnUpdateEssaySubscription = {
       id: string,
       name: string,
       imageUri: string,
-      temp: string,
       essays?:  {
         __typename: "ModelEssayConnection",
         nextToken?: string | null,
@@ -1033,7 +1013,6 @@ export type OnDeleteEssaySubscription = {
       id: string,
       name: string,
       imageUri: string,
-      temp: string,
       essays?:  {
         __typename: "ModelEssayConnection",
         nextToken?: string | null,

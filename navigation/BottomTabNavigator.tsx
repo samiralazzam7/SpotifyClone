@@ -14,7 +14,7 @@ import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/HomeScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
-import AlbumScreen from "../screens/AlbumScreen";
+import AuthorScreen from "../screens/AuthorScreen";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -71,9 +71,9 @@ function TabOneNavigator() {
       />
 
       <TabOneStack.Screen
-        name="AlbumScreen"
-        component={AlbumScreen}
-        options={{ headerTitle: 'Album' }}
+        name="AuthorScreen"
+        component={AuthorScreen}
+        options={{ headerTitle: 'Author' }}
       />
     </TabOneStack.Navigator>
   );

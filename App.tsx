@@ -17,7 +17,7 @@ export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
 
-  const [songId, setSongId] = useState<string|null>(null);
+  const [essayId, setEssayId] = useState<string|null>(null);
 
   if (!isLoadingComplete) {
     return null;
@@ -25,8 +25,8 @@ export default function App() {
     return (
       <SafeAreaProvider>
         <AppContext.Provider value={{
-          songId,
-          setSongId: (id: string) => setSongId(id),
+          essayId,
+          setEssayId: (id: string) => setEssayId(id),
         }}>
           <Navigation colorScheme={colorScheme} />
           <StatusBar />

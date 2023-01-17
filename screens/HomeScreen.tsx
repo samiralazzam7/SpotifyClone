@@ -3,37 +3,36 @@ import { StyleSheet, FlatList, View  } from 'react-native';
 
 import { API, graphqlOperation } from 'aws-amplify';
 
-import AlbumCategory from '../components/AlbumCategory';
-import albumCategories from '../data/albumCategories';
-import { listAlbumCategorys } from '../src/graphql/queries';
+import EssayCategory from '../components/EssayCategory';
+import { listEssayCategorys } from '../src/graphql/queries';
 import {useEffect, useState} from "react";
 
 export default function HomeScreen() {
 
-  const [categories, setCategories] = useState([]);
+  const [categorys, setCategorys] = useState([]);
 
   useEffect(() => {
-    const fetchAlbumCategories = async () => {
+    const fetchEssayCategorys = async () => {
       try {
-        const data = await API.graphql(graphqlOperation(listAlbumCategorys));
-        setCategories(data.data.listAlbumCategorys.items);
+        const data = await API.graphql(graphqlOperation(listEssayCategorys));
+        setCategorys(data.data.listEssayCategorys.items);
       } catch (e) {
         console.log(e);
       }
     }
 
-    fetchAlbumCategories();
+    fetchEssayCategorys();
   }, []);
 
 
   return (
     <View style={styles.container}>
        <FlatList
-         data={categories}
+         data={categorys}
          renderItem={({ item }) => (
-           <AlbumCategory
-             title={item.title}
-             albums={item.albums.items}
+           <EssayCategory
+             name={item.name}
+             essays={item.essays.items}
            />
          )}
          keyExtractor={(item) => item.id}

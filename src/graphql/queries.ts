@@ -40,6 +40,11 @@ export const listEssayCategorys = /* GraphQL */ `
         temp
         essays {
           nextToken
+          items {
+            id
+            imageUri
+            authorId
+          }
         }
         createdAt
         updatedAt
@@ -54,7 +59,6 @@ export const getAuthor = /* GraphQL */ `
       id
       name
       imageUri
-      temp
       essays {
         items {
           id
@@ -85,7 +89,6 @@ export const listAuthors = /* GraphQL */ `
         id
         name
         imageUri
-        temp
         essays {
           nextToken
         }
@@ -120,7 +123,6 @@ export const getEssay = /* GraphQL */ `
         id
         name
         imageUri
-        temp
         essays {
           nextToken
         }
@@ -158,7 +160,6 @@ export const listEssays = /* GraphQL */ `
           id
           name
           imageUri
-          temp
           createdAt
           updatedAt
         }

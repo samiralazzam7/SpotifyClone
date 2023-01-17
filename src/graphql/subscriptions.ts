@@ -83,7 +83,6 @@ export const onCreateAuthor = /* GraphQL */ `
       id
       name
       imageUri
-      temp
       essays {
         items {
           id
@@ -109,7 +108,6 @@ export const onUpdateAuthor = /* GraphQL */ `
       id
       name
       imageUri
-      temp
       essays {
         items {
           id
@@ -135,7 +133,6 @@ export const onDeleteAuthor = /* GraphQL */ `
       id
       name
       imageUri
-      temp
       essays {
         items {
           id
@@ -179,7 +176,6 @@ export const onCreateEssay = /* GraphQL */ `
         id
         name
         imageUri
-        temp
         essays {
           nextToken
         }
@@ -215,7 +211,6 @@ export const onUpdateEssay = /* GraphQL */ `
         id
         name
         imageUri
-        temp
         essays {
           nextToken
         }
@@ -251,7 +246,6 @@ export const onDeleteEssay = /* GraphQL */ `
         id
         name
         imageUri
-        temp
         essays {
           nextToken
         }
