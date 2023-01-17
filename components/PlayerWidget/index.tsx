@@ -4,6 +4,7 @@ import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { API, graphqlOperation } from 'aws-amplify';
 
 import styles from './styles';
+import {Audio} from "expo-av";
 import {Essay} from "../../types";
 import {Sound} from "expo-av/build/Audio/Sound";
 
@@ -40,6 +41,10 @@ const PlayerWidget = () => {
   }
 
   const playCurrentEssay = async () => {
+    await Audio.setAudioModeAsync({
+      playsInSilentModeIOS: true,
+    });
+
     if (sound) {
       await sound.unloadAsync();
     }
