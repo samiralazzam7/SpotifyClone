@@ -11,7 +11,7 @@ import { getAuthor } from '../src/graphql/queries';
 const AuthorScreen = () => {
 
   const route = useRoute();
-  const essayId = route.params.id;
+  const authorId = route.params.authorId;
 
   const [author, setAuthor] = useState(null)
 
@@ -25,7 +25,7 @@ const AuthorScreen = () => {
       }
     }
 
-    // fetchAlbumDetails();
+    fetchAuthorDetails();
   }, [])
 
   if (!author) {

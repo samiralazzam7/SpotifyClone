@@ -18,7 +18,7 @@ const EssayComponent = (props: EssayProps) => {
   const navigation = useNavigation();
 
   const onPress = () => {
-    navigation.navigate('EssayScreen', { id: props.essay.id })
+    navigation.navigate('AuthorScreen', { authorId: props.essay.authorId })
   }
 
   return (
