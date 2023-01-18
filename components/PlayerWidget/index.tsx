@@ -39,6 +39,10 @@ const PlayerWidget = () => {
   }
 
   const playCurrentEssay = async () => {
+    await Audio.setAudioModeAsync({
+      playsInSilentModeIOS: true,
+    });
+
     if (sound) {
       await sound.unloadAsync();
     }
