@@ -36,7 +36,7 @@ const AuthorScreen = () => {
     <View>
       <FlatList
         data={author.essays.items}
-        renderItem={({ item }) => <EssayListItem essay={item} />}
+        renderItem={({ item }) => <EssayListItem essay={item} author={author} />}
         keyExtractor={(item) => item.id}
         ListHeaderComponent={() => <AuthorHeader author={author} />}
       />

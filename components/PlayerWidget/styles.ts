@@ -3,7 +3,7 @@ import { StyleSheet} from "react-native";
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    bottom: 79,
+    bottom: 49,
     backgroundColor: '#131313',
     width: '100%',
     borderWidth: 2,
@@ -27,8 +27,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   nameContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'left',
+    overflow: 'hidden',
+    width: '60%',
   },
   iconsContainer: {
     flexDirection: 'row',
@@ -41,10 +42,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     margin: 10,
+    textTransform: 'capitalize',
   },
   author: {
     color: 'lightgray',
     fontSize: 18,
+    margin: 10,
+    marginTop: -5,
+    textTransform: 'capitalize',
   }
 })
 

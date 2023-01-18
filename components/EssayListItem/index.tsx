@@ -2,15 +2,17 @@ import React, {useContext} from 'react';
 import {Text, Image, View, TouchableWithoutFeedback, TouchableOpacity} from 'react-native';
 
 import styles from './styles';
-import {Essay} from "../../types";
+import {Essay, Author} from "../../types";
 import { AppContext } from '../../AppContext';
+import AuthorHeader from '../AuthorHeader';
 
 export type EssayListItemProps = {
   essay: Essay
+  author: Author
 }
 
 const EssayListItem = (props: EssayListItemProps) => {
-  const { essay } = props;
+  const { essay, author } = props;
 
   const { setEssayId } = useContext(AppContext);
 
@@ -23,8 +25,8 @@ const EssayListItem = (props: EssayListItemProps) => {
       <View style={styles.container}>
         <Image source={{ uri: essay.imageUri }} style={styles.image} />
         <View style={styles.rightContainer}>
-          <Text style={styles.name}>{essay.name}</Text>
-          <Text style={styles.author}>{essay.authorId}</Text>
+          <Text style={styles.name}>{essay.name.replaceAll('_', ' ')}</Text>
+          <Text style={styles.author}>{author.name.replaceAll('_', ' ')}</Text>
         </View>
       </View>
     </TouchableOpacity>

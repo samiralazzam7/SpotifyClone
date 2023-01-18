@@ -5,13 +5,15 @@ import { API, graphqlOperation } from 'aws-amplify';
 
 import styles from './styles';
 import {Sound} from "expo-av/build/Audio/Sound";
+import {Audio} from "expo-av"
 
 import { AppContext } from '../../AppContext';
-import {getEssay} from "../../src/graphql/queries";
+import {getEssay, getAuthor} from "../../src/graphql/queries";
 
 const PlayerWidget = () => {
 
   const [essay, setEssay] = useState(null);
+  const [authorName, setAuthorName] = useState<String|null>(null);
   const [sound, setSound] = useState<Sound|null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [duration, setDuration] = useState<number|null>(null);
@@ -22,8 +24,8 @@ const PlayerWidget = () => {
   useEffect(() => {
     const fetchEssay = async () => {
       try {
-        const data = await API.graphql(graphqlOperation(getEssay, { id: essayId }))
-        setEssay(data.data.getEssay);
+        const essayPromise = await API.graphql(graphqlOperation(getEssay, { id: essayId }));
+        setEssay(essayPromise.data.getEssay);
       } catch (e) {
         console.log(e);
       }
@@ -31,6 +33,19 @@ const PlayerWidget = () => {
 
     fetchEssay();
   }, [essayId])
+
+  useEffect(() => {
+    const fetchAuthor = async () => {
+      try {
+        const authorPromise = await API.graphql(graphqlOperation(getAuthor, { id: essay.authorId }));
+        setAuthorName(authorPromise.data.getAuthor.name.replaceAll('_', ' '));
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    fetchAuthor();
+  }, [essay])
 
   const onPlaybackStatusUpdate = (status) => {
     setIsPlaying(status.isPlaying);
@@ -90,8 +105,8 @@ const PlayerWidget = () => {
         <Image source={{ uri: essay.imageUri }} style={styles.image} />
         <View style={styles.rightContainer}>
           <View style={styles.nameContainer}>
-            <Text style={styles.name}>{essay.name}</Text>
-            {/* <Text style={styles.author}>{essay.authorId}</Text> */}
+            <Text style={styles.name} numberOfLines={1}>{essay.name.replaceAll('_', ' ')}</Text>
+            <Text style={styles.author} numberOfLines={1}>{authorName}</Text>
           </View>
 
           <View style={styles.iconsContainer}>

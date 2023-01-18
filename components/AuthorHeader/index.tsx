@@ -12,7 +12,7 @@ const AuthorHeader = (props: AuthorHeaderProps) => {
   return (
       <View style={styles.container}>
       <Image source={{ uri: author.imageUri}} style={styles.image} />
-      <Text style={styles.name}>{author.name}</Text>
+      <Text style={styles.name}>{author.name.replaceAll('_', ' ')}</Text>
       {/* <View style={styles.creatorContainer}>
         <Text style={styles.creator}>By {author.name}</Text>
         <Text style={styles.likes}>{album.numberOfLikes} Likes</Text>

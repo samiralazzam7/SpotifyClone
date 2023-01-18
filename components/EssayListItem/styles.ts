@@ -16,10 +16,12 @@ const styles = StyleSheet.create({
   name: {
     color: 'white',
     fontSize: 24,
+    textTransform: 'capitalize',
   },
   author: {
     color: 'lightgray',
     fontSize: 20,
+    textTransform: 'capitalize',
   }
 })
 
