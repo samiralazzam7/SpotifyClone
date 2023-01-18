@@ -34,6 +34,7 @@ export const listEssayCategorys = /* GraphQL */ `
         essays {
           items {
             id
+            name
             imageUri
             authorId
           }

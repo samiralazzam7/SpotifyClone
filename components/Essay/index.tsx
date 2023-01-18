@@ -25,7 +25,7 @@ const EssayComponent = (props: EssayProps) => {
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.container}>
           <Image source={{uri: props.essay.imageUri}} style={styles.image}/>
-          <Text style={styles.text}>{props.essay.authorId}</Text>
+          <Text style={styles.text}>{props.essay.name.split('_').join(' ')}</Text>
       </View>
     </TouchableWithoutFeedback>
 

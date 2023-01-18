@@ -4,7 +4,6 @@ import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { API, graphqlOperation } from 'aws-amplify';
 
 import styles from './styles';
-import {Essay} from "../../types";
 import {Sound} from "expo-av/build/Audio/Sound";
 
 import { AppContext } from '../../AppContext';
@@ -43,13 +42,11 @@ const PlayerWidget = () => {
     if (sound) {
       await sound.unloadAsync();
     }
-
     const { sound: newSound } = await Sound.createAsync(
       { uri: essay.audioUri },
       { shouldPlay: isPlaying },
       onPlaybackStatusUpdate
     )
-
     setSound(newSound)
   }
 
@@ -90,7 +87,7 @@ const PlayerWidget = () => {
         <View style={styles.rightContainer}>
           <View style={styles.nameContainer}>
             <Text style={styles.name}>{essay.name}</Text>
-            <Text style={styles.author}>{essay.authorId}</Text>
+            {/* <Text style={styles.author}>{essay.authorId}</Text> */}
           </View>
 
           <View style={styles.iconsContainer}>

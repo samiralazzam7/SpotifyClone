@@ -11,7 +11,7 @@ export type EssayCategoryProps = {
 
 const EssayCategory = (props: EssayCategoryProps) => (
   <View style={styles.container}>
-    <Text style={styles.name}>{props.name}</Text>
+    <Text style={styles.name}>{props.name.charAt(0).toUpperCase() + props.name.slice(1).toLowerCase()}</Text>
     <FlatList
       data={props.essays}
       renderItem={({ item }) => <EssayComponent essay={item} />}
