@@ -10,7 +10,7 @@ import {Audio} from "expo-av"
 import { AppContext } from '../../AppContext';
 import {getEssay, getAuthor} from "../../src/graphql/queries";
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/native';
+import * as RootNavigation from '../../navigation/index'
 
 const PlayerWidget = () => {
 
@@ -100,10 +100,9 @@ const PlayerWidget = () => {
     return null;
   }
 
-  // const navigation = useNavigation();
-  // const onPress = () => {
-  //   navigation.navigate('PlayScreen', { essayId: essayId })
-  // }
+  const onPress = () => {
+    RootNavigation.navigate('PlayScreen', { essayId: essay.id })
+  }
 
   return (
     <View style={styles.container}>
@@ -111,12 +110,12 @@ const PlayerWidget = () => {
       <View style={styles.row}>
         <Image source={{ uri: essay.imageUri }} style={styles.image} />
         <View style={styles.rightContainer}>
-          {/* <TouchableWithoutFeedback onPress={onPress}> */}
+          <TouchableWithoutFeedback onPress={onPress}>
             <View style={styles.nameContainer}>
               <Text style={styles.name} numberOfLines={1}>{essay.name.replaceAll('_', ' ')}</Text>
               <Text style={styles.author} numberOfLines={1}>{authorName}</Text>
             </View>
-          {/* </TouchableWithoutFeedback> */}
+          </TouchableWithoutFeedback>
 
           <View style={styles.iconsContainer}>
             <AntDesign name="hearto" size={30} color={"white"}/>

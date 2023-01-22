@@ -13,7 +13,7 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/HomeScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import { BottomTabParamList, TabOneParamList, TabOneSubParamList, TabTwoParamList } from '../types';
 import AuthorScreen from "../screens/AuthorScreen";
 import PlayScreen from '../screens/PlayScreen';
 
@@ -77,11 +77,11 @@ function TabOneStackScreen() {
         options={{ headerTitle: 'Author' }}
       />
 
-      {/* <TabOneStack.Screen
+      <TabOneStack.Screen
         name="PlayScreen"
         component={PlayScreen}
         options={{ headerTitle: 'Play' }}
-      /> */}
+      />
     </TabOneStack.Navigator>
   );
 }
