@@ -15,6 +15,7 @@ import HomeScreen from '../screens/HomeScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 import AuthorScreen from "../screens/AuthorScreen";
+import PlayScreen from '../screens/PlayScreen';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -27,7 +28,7 @@ export default function BottomTabNavigator() {
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
         name="Home"
-        component={TabOneNavigator}
+        component={TabOneStackScreen}
         options={{
           tabBarIcon: ({ color }) => <Entypo name="home" size={30} style={{ marginBottom: -3 }} color={color} />,
         }}
@@ -61,11 +62,11 @@ export default function BottomTabNavigator() {
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
 const TabOneStack = createStackNavigator<TabOneParamList>();
 
-function TabOneNavigator() {
+function TabOneStackScreen() {
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
-        name="TabOneScreen"
+        name="HomeScreen"
         component={HomeScreen}
         options={{ headerTitle: 'Home' }}
       />
@@ -75,9 +76,35 @@ function TabOneNavigator() {
         component={AuthorScreen}
         options={{ headerTitle: 'Author' }}
       />
+
+      {/* <TabOneStack.Screen
+        name="PlayScreen"
+        component={PlayScreen}
+        options={{ headerTitle: 'Play' }}
+      /> */}
     </TabOneStack.Navigator>
   );
 }
+
+// const TabOneSubStack = createStackNavigator<TabOneSubParamList>();
+
+// function TabOneSubNavigator() {
+//   return (
+//     <TabOneSubStack.Navigator>
+//       <TabOneSubStack.Screen
+//         name="AuthorScreen"
+//         component={AuthorScreen}
+//         options={{ headerTitle: 'Author' }}
+//       />
+
+//       <TabOneSubStack.Screen
+//         name="PlayScreen"
+//         component={PlayScreen}
+//         options={{ headerTitle: 'Play' }}
+//       />
+//     </TabOneSubStack.Navigator>
+//   )
+// }
 
 const TabTwoStack = createStackNavigator<TabTwoParamList>();
 
