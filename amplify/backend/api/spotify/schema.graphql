@@ -4,6 +4,19 @@ type EssayCategory @model @key(name: "byEssayCategoryName", fields: ["name"]) {
   essays: [Essay] @connection(keyName: "byEssayCategory", fields: ["id"])
 }
 
+type EssayAlbum @model
+@key(name: "byEssayAlbumName", fields: ["name"])
+@key(name: "byAuthor", fields: ["authorId"])
+@key(name: "byCategory", fields: ["categoryId"]) {
+  id: ID!
+  name: String!
+  imageUri: String!
+  essays: [Essay] @connection(keyName: "byEssayAlbum", fields: ["id"])
+
+  authorId: ID!
+  categoryId: ID!
+}
+
 type Author @model @key(name: "byAuthorName", fields: ["name"]) {
   id: ID!
   name: String!
@@ -11,7 +24,11 @@ type Author @model @key(name: "byAuthorName", fields: ["name"]) {
   essays: [Essay] @connection(keyName: "byAuthor", fields: ["id"])
 }
 
-type Essay @model @key(name: "byEssayCategory", fields: ["essayCategoryId"]) @key(name: "byAuthor", fields: ["authorId"]) @key(name: "byEssayNameAndAuthor", fields: ["name", "authorId"]) {
+type Essay @model
+@key(name: "byEssayCategory", fields: ["essayCategoryId"])
+@key(name: "byAuthor", fields: ["authorId"])
+@key(name: "byEssayNameAndAuthor", fields: ["name", "authorId"])
+@key(name: "byEssayAlbum", fields: ["essayAlbumId"]) {
   id: ID!
   name: String!
   imageUri: String!
@@ -22,4 +39,6 @@ type Essay @model @key(name: "byEssayCategory", fields: ["essayCategoryId"]) @ke
 
   authorId: ID!
   author: Author @connection(fields: ["authorId"])
+
+  essayAlbumId: ID!
 }

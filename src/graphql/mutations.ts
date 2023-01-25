@@ -18,6 +18,7 @@ export const createEssayCategory = /* GraphQL */ `
           audioUri
           essayCategoryId
           authorId
+          essayAlbumId
           createdAt
           updatedAt
         }
@@ -44,6 +45,7 @@ export const updateEssayCategory = /* GraphQL */ `
           audioUri
           essayCategoryId
           authorId
+          essayAlbumId
           createdAt
           updatedAt
         }
@@ -70,11 +72,102 @@ export const deleteEssayCategory = /* GraphQL */ `
           audioUri
           essayCategoryId
           authorId
+          essayAlbumId
           createdAt
           updatedAt
         }
         nextToken
       }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createEssayAlbum = /* GraphQL */ `
+  mutation CreateEssayAlbum(
+    $input: CreateEssayAlbumInput!
+    $condition: ModelEssayAlbumConditionInput
+  ) {
+    createEssayAlbum(input: $input, condition: $condition) {
+      id
+      name
+      imageUri
+      essays {
+        items {
+          id
+          name
+          imageUri
+          audioUri
+          essayCategoryId
+          authorId
+          essayAlbumId
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      authorId
+      categoryId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateEssayAlbum = /* GraphQL */ `
+  mutation UpdateEssayAlbum(
+    $input: UpdateEssayAlbumInput!
+    $condition: ModelEssayAlbumConditionInput
+  ) {
+    updateEssayAlbum(input: $input, condition: $condition) {
+      id
+      name
+      imageUri
+      essays {
+        items {
+          id
+          name
+          imageUri
+          audioUri
+          essayCategoryId
+          authorId
+          essayAlbumId
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      authorId
+      categoryId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteEssayAlbum = /* GraphQL */ `
+  mutation DeleteEssayAlbum(
+    $input: DeleteEssayAlbumInput!
+    $condition: ModelEssayAlbumConditionInput
+  ) {
+    deleteEssayAlbum(input: $input, condition: $condition) {
+      id
+      name
+      imageUri
+      essays {
+        items {
+          id
+          name
+          imageUri
+          audioUri
+          essayCategoryId
+          authorId
+          essayAlbumId
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      authorId
+      categoryId
       createdAt
       updatedAt
     }
@@ -97,6 +190,7 @@ export const createAuthor = /* GraphQL */ `
           audioUri
           essayCategoryId
           authorId
+          essayAlbumId
           createdAt
           updatedAt
         }
@@ -124,6 +218,7 @@ export const updateAuthor = /* GraphQL */ `
           audioUri
           essayCategoryId
           authorId
+          essayAlbumId
           createdAt
           updatedAt
         }
@@ -151,6 +246,7 @@ export const deleteAuthor = /* GraphQL */ `
           audioUri
           essayCategoryId
           authorId
+          essayAlbumId
           createdAt
           updatedAt
         }
@@ -192,6 +288,7 @@ export const createEssay = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      essayAlbumId
       createdAt
       updatedAt
     }
@@ -228,6 +325,7 @@ export const updateEssay = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      essayAlbumId
       createdAt
       updatedAt
     }
@@ -264,6 +362,7 @@ export const deleteEssay = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      essayAlbumId
       createdAt
       updatedAt
     }

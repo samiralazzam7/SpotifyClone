@@ -15,6 +15,7 @@ export const onCreateEssayCategory = /* GraphQL */ `
           audioUri
           essayCategoryId
           authorId
+          essayAlbumId
           createdAt
           updatedAt
         }
@@ -38,6 +39,7 @@ export const onUpdateEssayCategory = /* GraphQL */ `
           audioUri
           essayCategoryId
           authorId
+          essayAlbumId
           createdAt
           updatedAt
         }
@@ -61,11 +63,93 @@ export const onDeleteEssayCategory = /* GraphQL */ `
           audioUri
           essayCategoryId
           authorId
+          essayAlbumId
           createdAt
           updatedAt
         }
         nextToken
       }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateEssayAlbum = /* GraphQL */ `
+  subscription OnCreateEssayAlbum {
+    onCreateEssayAlbum {
+      id
+      name
+      imageUri
+      essays {
+        items {
+          id
+          name
+          imageUri
+          audioUri
+          essayCategoryId
+          authorId
+          essayAlbumId
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      authorId
+      categoryId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateEssayAlbum = /* GraphQL */ `
+  subscription OnUpdateEssayAlbum {
+    onUpdateEssayAlbum {
+      id
+      name
+      imageUri
+      essays {
+        items {
+          id
+          name
+          imageUri
+          audioUri
+          essayCategoryId
+          authorId
+          essayAlbumId
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      authorId
+      categoryId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteEssayAlbum = /* GraphQL */ `
+  subscription OnDeleteEssayAlbum {
+    onDeleteEssayAlbum {
+      id
+      name
+      imageUri
+      essays {
+        items {
+          id
+          name
+          imageUri
+          audioUri
+          essayCategoryId
+          authorId
+          essayAlbumId
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      authorId
+      categoryId
       createdAt
       updatedAt
     }
@@ -85,6 +169,7 @@ export const onCreateAuthor = /* GraphQL */ `
           audioUri
           essayCategoryId
           authorId
+          essayAlbumId
           createdAt
           updatedAt
         }
@@ -109,6 +194,7 @@ export const onUpdateAuthor = /* GraphQL */ `
           audioUri
           essayCategoryId
           authorId
+          essayAlbumId
           createdAt
           updatedAt
         }
@@ -133,6 +219,7 @@ export const onDeleteAuthor = /* GraphQL */ `
           audioUri
           essayCategoryId
           authorId
+          essayAlbumId
           createdAt
           updatedAt
         }
@@ -171,6 +258,7 @@ export const onCreateEssay = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      essayAlbumId
       createdAt
       updatedAt
     }
@@ -204,6 +292,7 @@ export const onUpdateEssay = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      essayAlbumId
       createdAt
       updatedAt
     }
@@ -237,6 +326,7 @@ export const onDeleteEssay = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      essayAlbumId
       createdAt
       updatedAt
     }
