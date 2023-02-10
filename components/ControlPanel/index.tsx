@@ -17,11 +17,11 @@ const ControlPanelComponent = (props: ControlPanelProps) => {
   return (
     <View style={styles.controllerContainer}>
 
-        <AntDesign name="fastbackward" size={30} color={"white"}/>
-        <AntDesign name="stepbackward" size={30} color={"white"}/>
-        <AntDesign name="play" size={30} color={"white"}/>
-        <AntDesign name="stepforward" size={30} color={"white"}/>
-        <AntDesign name="fastforward" size={30} color={"white"}/>
+        <AntDesign name="fastbackward" size={30} color={"white"} style={styles.controls}/>
+        <AntDesign name="stepbackward" size={30} color={"white"} style={styles.controls}/>
+        <AntDesign name="play" size={60} color={"white"} style={styles.controls}/>
+        <AntDesign name="stepforward" size={30} color={"white"} style={styles.controls}/>
+        <AntDesign name="fastforward" size={30} color={"white"} style={styles.controls}/>
 
 
         {/* <TouchableOpacity onPress={onPlayPausePress}> */}

@@ -10,7 +10,7 @@ export type AuthorHeaderProps = {
 const AuthorHeader = (props: AuthorHeaderProps) => {
   const { author } = props;
   return (
-      <View style={styles.container}>
+    <View style={styles.container}>
       <Image source={{ uri: author.imageUri}} style={styles.image} />
       <Text style={styles.name}>{author.name.replaceAll('_', ' ')}</Text>
       {/* <View style={styles.creatorContainer}>
