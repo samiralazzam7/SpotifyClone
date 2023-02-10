@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { API, graphqlOperation } from 'aws-amplify';
 
 import { getEssay } from '../src/graphql/queries';
 import EssayComponent from '../components/Essay';
+import ControlPanel from '../components/ControlPanel';
 
 const PlayScreen = () => {
 
@@ -32,9 +33,17 @@ const PlayScreen = () => {
 
   return (
     <View>
-        <EssayComponent essay={essay} />
+      <Image source={{uri: essay.imageUri}} />
+      <ControlPanel />
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  image: {
+    width: '100%',
+    margin: '10%',
+  }
+});
 
 export default PlayScreen;

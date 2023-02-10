@@ -79,6 +79,7 @@ export type Essay = {
   essayCategory?: EssayCategory | null,
   authorId: string,
   author?: Author | null,
+  essayAlbumId: string,
   createdAt: string,
   updatedAt: string,
 };
@@ -99,6 +100,64 @@ export type UpdateEssayCategoryInput = {
 };
 
 export type DeleteEssayCategoryInput = {
+  id: string,
+};
+
+export type CreateEssayAlbumInput = {
+  id?: string | null,
+  name: string,
+  imageUri: string,
+  authorId: string,
+  categoryId: string,
+};
+
+export type ModelEssayAlbumConditionInput = {
+  name?: ModelStringInput | null,
+  imageUri?: ModelStringInput | null,
+  authorId?: ModelIDInput | null,
+  categoryId?: ModelIDInput | null,
+  and?: Array< ModelEssayAlbumConditionInput | null > | null,
+  or?: Array< ModelEssayAlbumConditionInput | null > | null,
+  not?: ModelEssayAlbumConditionInput | null,
+};
+
+export type ModelIDInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
+};
+
+export type EssayAlbum = {
+  __typename: "EssayAlbum",
+  id: string,
+  name: string,
+  imageUri: string,
+  essays?: ModelEssayConnection | null,
+  authorId: string,
+  categoryId: string,
+  createdAt: string,
+  updatedAt: string,
+};
+
+export type UpdateEssayAlbumInput = {
+  id: string,
+  name?: string | null,
+  imageUri?: string | null,
+  authorId?: string | null,
+  categoryId?: string | null,
+};
+
+export type DeleteEssayAlbumInput = {
   id: string,
 };
 
@@ -133,6 +192,7 @@ export type CreateEssayInput = {
   audioUri: string,
   essayCategoryId: string,
   authorId: string,
+  essayAlbumId: string,
 };
 
 export type ModelEssayConditionInput = {
@@ -141,25 +201,10 @@ export type ModelEssayConditionInput = {
   audioUri?: ModelStringInput | null,
   essayCategoryId?: ModelIDInput | null,
   authorId?: ModelIDInput | null,
+  essayAlbumId?: ModelIDInput | null,
   and?: Array< ModelEssayConditionInput | null > | null,
   or?: Array< ModelEssayConditionInput | null > | null,
   not?: ModelEssayConditionInput | null,
-};
-
-export type ModelIDInput = {
-  ne?: string | null,
-  eq?: string | null,
-  le?: string | null,
-  lt?: string | null,
-  ge?: string | null,
-  gt?: string | null,
-  contains?: string | null,
-  notContains?: string | null,
-  between?: Array< string | null > | null,
-  beginsWith?: string | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-  size?: ModelSizeInput | null,
 };
 
 export type UpdateEssayInput = {
@@ -169,6 +214,7 @@ export type UpdateEssayInput = {
   audioUri?: string | null,
   essayCategoryId?: string | null,
   authorId?: string | null,
+  essayAlbumId?: string | null,
 };
 
 export type DeleteEssayInput = {
@@ -186,6 +232,23 @@ export type ModelEssayCategoryFilterInput = {
 export type ModelEssayCategoryConnection = {
   __typename: "ModelEssayCategoryConnection",
   items:  Array<EssayCategory | null >,
+  nextToken?: string | null,
+};
+
+export type ModelEssayAlbumFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  imageUri?: ModelStringInput | null,
+  authorId?: ModelIDInput | null,
+  categoryId?: ModelIDInput | null,
+  and?: Array< ModelEssayAlbumFilterInput | null > | null,
+  or?: Array< ModelEssayAlbumFilterInput | null > | null,
+  not?: ModelEssayAlbumFilterInput | null,
+};
+
+export type ModelEssayAlbumConnection = {
+  __typename: "ModelEssayAlbumConnection",
+  items:  Array<EssayAlbum | null >,
   nextToken?: string | null,
 };
 
@@ -211,6 +274,7 @@ export type ModelEssayFilterInput = {
   audioUri?: ModelStringInput | null,
   essayCategoryId?: ModelIDInput | null,
   authorId?: ModelIDInput | null,
+  essayAlbumId?: ModelIDInput | null,
   and?: Array< ModelEssayFilterInput | null > | null,
   or?: Array< ModelEssayFilterInput | null > | null,
   not?: ModelEssayFilterInput | null,
@@ -236,6 +300,7 @@ export type CreateEssayCategoryMutation = {
         audioUri: string,
         essayCategoryId: string,
         authorId: string,
+        essayAlbumId: string,
         createdAt: string,
         updatedAt: string,
       } | null >,
@@ -266,6 +331,7 @@ export type UpdateEssayCategoryMutation = {
         audioUri: string,
         essayCategoryId: string,
         authorId: string,
+        essayAlbumId: string,
         createdAt: string,
         updatedAt: string,
       } | null >,
@@ -296,11 +362,114 @@ export type DeleteEssayCategoryMutation = {
         audioUri: string,
         essayCategoryId: string,
         authorId: string,
+        essayAlbumId: string,
         createdAt: string,
         updatedAt: string,
       } | null >,
       nextToken?: string | null,
     } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type CreateEssayAlbumMutationVariables = {
+  input: CreateEssayAlbumInput,
+  condition?: ModelEssayAlbumConditionInput | null,
+};
+
+export type CreateEssayAlbumMutation = {
+  createEssayAlbum?:  {
+    __typename: "EssayAlbum",
+    id: string,
+    name: string,
+    imageUri: string,
+    essays?:  {
+      __typename: "ModelEssayConnection",
+      items:  Array< {
+        __typename: "Essay",
+        id: string,
+        name: string,
+        imageUri: string,
+        audioUri: string,
+        essayCategoryId: string,
+        authorId: string,
+        essayAlbumId: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    authorId: string,
+    categoryId: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type UpdateEssayAlbumMutationVariables = {
+  input: UpdateEssayAlbumInput,
+  condition?: ModelEssayAlbumConditionInput | null,
+};
+
+export type UpdateEssayAlbumMutation = {
+  updateEssayAlbum?:  {
+    __typename: "EssayAlbum",
+    id: string,
+    name: string,
+    imageUri: string,
+    essays?:  {
+      __typename: "ModelEssayConnection",
+      items:  Array< {
+        __typename: "Essay",
+        id: string,
+        name: string,
+        imageUri: string,
+        audioUri: string,
+        essayCategoryId: string,
+        authorId: string,
+        essayAlbumId: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    authorId: string,
+    categoryId: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type DeleteEssayAlbumMutationVariables = {
+  input: DeleteEssayAlbumInput,
+  condition?: ModelEssayAlbumConditionInput | null,
+};
+
+export type DeleteEssayAlbumMutation = {
+  deleteEssayAlbum?:  {
+    __typename: "EssayAlbum",
+    id: string,
+    name: string,
+    imageUri: string,
+    essays?:  {
+      __typename: "ModelEssayConnection",
+      items:  Array< {
+        __typename: "Essay",
+        id: string,
+        name: string,
+        imageUri: string,
+        audioUri: string,
+        essayCategoryId: string,
+        authorId: string,
+        essayAlbumId: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    authorId: string,
+    categoryId: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -327,6 +496,7 @@ export type CreateAuthorMutation = {
         audioUri: string,
         essayCategoryId: string,
         authorId: string,
+        essayAlbumId: string,
         createdAt: string,
         updatedAt: string,
       } | null >,
@@ -358,6 +528,7 @@ export type UpdateAuthorMutation = {
         audioUri: string,
         essayCategoryId: string,
         authorId: string,
+        essayAlbumId: string,
         createdAt: string,
         updatedAt: string,
       } | null >,
@@ -389,6 +560,7 @@ export type DeleteAuthorMutation = {
         audioUri: string,
         essayCategoryId: string,
         authorId: string,
+        essayAlbumId: string,
         createdAt: string,
         updatedAt: string,
       } | null >,
@@ -436,6 +608,7 @@ export type CreateEssayMutation = {
       createdAt: string,
       updatedAt: string,
     } | null,
+    essayAlbumId: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -478,6 +651,7 @@ export type UpdateEssayMutation = {
       createdAt: string,
       updatedAt: string,
     } | null,
+    essayAlbumId: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -520,6 +694,7 @@ export type DeleteEssayMutation = {
       createdAt: string,
       updatedAt: string,
     } | null,
+    essayAlbumId: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -544,6 +719,7 @@ export type GetEssayCategoryQuery = {
         audioUri: string,
         essayCategoryId: string,
         authorId: string,
+        essayAlbumId: string,
         createdAt: string,
         updatedAt: string,
       } | null >,
@@ -578,6 +754,66 @@ export type ListEssayCategorysQuery = {
   } | null,
 };
 
+export type GetEssayAlbumQueryVariables = {
+  id: string,
+};
+
+export type GetEssayAlbumQuery = {
+  getEssayAlbum?:  {
+    __typename: "EssayAlbum",
+    id: string,
+    name: string,
+    imageUri: string,
+    essays?:  {
+      __typename: "ModelEssayConnection",
+      items:  Array< {
+        __typename: "Essay",
+        id: string,
+        name: string,
+        imageUri: string,
+        audioUri: string,
+        essayCategoryId: string,
+        authorId: string,
+        essayAlbumId: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    authorId: string,
+    categoryId: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type ListEssayAlbumsQueryVariables = {
+  filter?: ModelEssayAlbumFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListEssayAlbumsQuery = {
+  listEssayAlbums?:  {
+    __typename: "ModelEssayAlbumConnection",
+    items:  Array< {
+      __typename: "EssayAlbum",
+      id: string,
+      name: string,
+      imageUri: string,
+      essays?:  {
+        __typename: "ModelEssayConnection",
+        nextToken?: string | null,
+      } | null,
+      authorId: string,
+      categoryId: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
 export type GetAuthorQueryVariables = {
   id: string,
 };
@@ -598,6 +834,7 @@ export type GetAuthorQuery = {
         audioUri: string,
         essayCategoryId: string,
         authorId: string,
+        essayAlbumId: string,
         createdAt: string,
         updatedAt: string,
       } | null >,
@@ -669,6 +906,7 @@ export type GetEssayQuery = {
       createdAt: string,
       updatedAt: string,
     } | null,
+    essayAlbumId: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -706,6 +944,7 @@ export type ListEssaysQuery = {
         createdAt: string,
         updatedAt: string,
       } | null,
+      essayAlbumId: string,
       createdAt: string,
       updatedAt: string,
     } | null >,
@@ -728,6 +967,7 @@ export type OnCreateEssayCategorySubscription = {
         audioUri: string,
         essayCategoryId: string,
         authorId: string,
+        essayAlbumId: string,
         createdAt: string,
         updatedAt: string,
       } | null >,
@@ -753,6 +993,7 @@ export type OnUpdateEssayCategorySubscription = {
         audioUri: string,
         essayCategoryId: string,
         authorId: string,
+        essayAlbumId: string,
         createdAt: string,
         updatedAt: string,
       } | null >,
@@ -778,11 +1019,99 @@ export type OnDeleteEssayCategorySubscription = {
         audioUri: string,
         essayCategoryId: string,
         authorId: string,
+        essayAlbumId: string,
         createdAt: string,
         updatedAt: string,
       } | null >,
       nextToken?: string | null,
     } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnCreateEssayAlbumSubscription = {
+  onCreateEssayAlbum?:  {
+    __typename: "EssayAlbum",
+    id: string,
+    name: string,
+    imageUri: string,
+    essays?:  {
+      __typename: "ModelEssayConnection",
+      items:  Array< {
+        __typename: "Essay",
+        id: string,
+        name: string,
+        imageUri: string,
+        audioUri: string,
+        essayCategoryId: string,
+        authorId: string,
+        essayAlbumId: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    authorId: string,
+    categoryId: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnUpdateEssayAlbumSubscription = {
+  onUpdateEssayAlbum?:  {
+    __typename: "EssayAlbum",
+    id: string,
+    name: string,
+    imageUri: string,
+    essays?:  {
+      __typename: "ModelEssayConnection",
+      items:  Array< {
+        __typename: "Essay",
+        id: string,
+        name: string,
+        imageUri: string,
+        audioUri: string,
+        essayCategoryId: string,
+        authorId: string,
+        essayAlbumId: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    authorId: string,
+    categoryId: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnDeleteEssayAlbumSubscription = {
+  onDeleteEssayAlbum?:  {
+    __typename: "EssayAlbum",
+    id: string,
+    name: string,
+    imageUri: string,
+    essays?:  {
+      __typename: "ModelEssayConnection",
+      items:  Array< {
+        __typename: "Essay",
+        id: string,
+        name: string,
+        imageUri: string,
+        audioUri: string,
+        essayCategoryId: string,
+        authorId: string,
+        essayAlbumId: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    authorId: string,
+    categoryId: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -804,6 +1133,7 @@ export type OnCreateAuthorSubscription = {
         audioUri: string,
         essayCategoryId: string,
         authorId: string,
+        essayAlbumId: string,
         createdAt: string,
         updatedAt: string,
       } | null >,
@@ -830,6 +1160,7 @@ export type OnUpdateAuthorSubscription = {
         audioUri: string,
         essayCategoryId: string,
         authorId: string,
+        essayAlbumId: string,
         createdAt: string,
         updatedAt: string,
       } | null >,
@@ -856,6 +1187,7 @@ export type OnDeleteAuthorSubscription = {
         audioUri: string,
         essayCategoryId: string,
         authorId: string,
+        essayAlbumId: string,
         createdAt: string,
         updatedAt: string,
       } | null >,
@@ -898,6 +1230,7 @@ export type OnCreateEssaySubscription = {
       createdAt: string,
       updatedAt: string,
     } | null,
+    essayAlbumId: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -935,6 +1268,7 @@ export type OnUpdateEssaySubscription = {
       createdAt: string,
       updatedAt: string,
     } | null,
+    essayAlbumId: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -972,6 +1306,7 @@ export type OnDeleteEssaySubscription = {
       createdAt: string,
       updatedAt: string,
     } | null,
+    essayAlbumId: string,
     createdAt: string,
     updatedAt: string,
   } | null,

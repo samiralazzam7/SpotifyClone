@@ -15,9 +15,14 @@ export const getEssayCategory = /* GraphQL */ `
           audioUri
           essayCategoryId
           authorId
+          essayAlbumId
+          createdAt
+          updatedAt
         }
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -40,6 +45,58 @@ export const listEssayCategorys = /* GraphQL */ `
           }
           nextToken
         }  
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getEssayAlbum = /* GraphQL */ `
+  query GetEssayAlbum($id: ID!) {
+    getEssayAlbum(id: $id) {
+      id
+      name
+      imageUri
+      essays {
+        items {
+          id
+          name
+          imageUri
+          audioUri
+          essayCategoryId
+          authorId
+          essayAlbumId
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      authorId
+      categoryId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listEssayAlbums = /* GraphQL */ `
+  query ListEssayAlbums(
+    $filter: ModelEssayAlbumFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listEssayAlbums(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        imageUri
+        essays {
+          nextToken
+        }
+        authorId
+        categoryId
+        createdAt
+        updatedAt
       }
       nextToken
     }
@@ -59,9 +116,14 @@ export const getAuthor = /* GraphQL */ `
           audioUri
           essayCategoryId
           authorId
+          essayAlbumId
+          createdAt
+          updatedAt
         }
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -79,6 +141,8 @@ export const listAuthors = /* GraphQL */ `
         essays {
           nextToken
         }
+        createdAt
+        updatedAt
       }
       nextToken
     }
@@ -98,6 +162,8 @@ export const getEssay = /* GraphQL */ `
         essays {
           nextToken
         }
+        createdAt
+        updatedAt
       }
       authorId
       author {
@@ -107,7 +173,12 @@ export const getEssay = /* GraphQL */ `
         essays {
           nextToken
         }
+        createdAt
+        updatedAt
       }
+      essayAlbumId
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -127,13 +198,20 @@ export const listEssays = /* GraphQL */ `
         essayCategory {
           id
           name
+          createdAt
+          updatedAt
         }
         authorId
         author {
           id
           name
           imageUri
+          createdAt
+          updatedAt
         }
+        essayAlbumId
+        createdAt
+        updatedAt
       }
       nextToken
     }
