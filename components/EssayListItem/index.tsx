@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {Text, Image, View, TouchableWithoutFeedback, TouchableOpacity} from 'react-native';
 
 import styles from './styles';
-import {Essay, Author} from "../../types";
+import {Essay, Author, Album} from "../../types";
 import { AppContext } from '../../AppContext';
 import AuthorHeader from '../AuthorHeader';
 
@@ -12,7 +12,7 @@ export type EssayListItemProps = {
 }
 
 const EssayListItem = (props: EssayListItemProps) => {
-  const { essay, author } = props;
+  const { essay, author} = props;
 
   const { setEssayId } = useContext(AppContext);
 

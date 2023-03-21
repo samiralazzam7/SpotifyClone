@@ -30,8 +30,18 @@ export type Essay = {
   name: string;
   imageUri: string;
   audioUri: string;
+  essayAlbumId: string;
   essayCategoryId: string;
   authorId: string;
+}
+
+export type Album = {
+  id: string;
+  name: string;
+  imageUri: string;
+  essays: Essay[];
+  authorId: string;
+  categoryId: string;
 }
 
 export type Author = {

@@ -32,7 +32,7 @@ export default function HomeScreen() {
          renderItem={({ item }) => (
            <EssayCategory
              name={item.name}
-             essays={item.essays.items}
+             categoryID={item.id}
            />
          )}
          keyExtractor={(item) => item.id}

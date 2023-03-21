@@ -5,7 +5,6 @@ import { API, graphqlOperation } from 'aws-amplify';
 
 import EssayListItem from '../components/EssayListItem';
 import AuthorHeader from '../components/AuthorHeader';
-// import albumDetails from '../data/authorDetails';
 import { getAuthor } from '../src/graphql/queries';
 
 const AuthorScreen = () => {

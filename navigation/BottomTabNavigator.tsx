@@ -15,6 +15,7 @@ import HomeScreen from '../screens/HomeScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabOneSubParamList, TabTwoParamList } from '../types';
 import AuthorScreen from "../screens/AuthorScreen";
+import AlbumScreen from "../screens/AlbumScreen";
 import PlayScreen from '../screens/PlayScreen';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -75,6 +76,12 @@ function TabOneStackScreen() {
         name="AuthorScreen"
         component={AuthorScreen}
         options={{ headerTitle: 'Author' }}
+      />
+
+      <TabOneStack.Screen
+        name="AlbumScreen"
+        component={AlbumScreen}
+        options={{ headerTitle: 'Album' }}
       />
 
       <TabOneStack.Screen

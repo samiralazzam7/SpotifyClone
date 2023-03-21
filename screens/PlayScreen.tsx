@@ -39,7 +39,7 @@ const PlayScreen = () => {
     }
 
     fetchAuthorDetails();
-  }, [])
+  }, [essay])
 
   if (!essay || !author) {
     return <Text>Loading...</Text>
