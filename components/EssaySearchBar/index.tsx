@@ -41,8 +41,6 @@ const EssaySearchBar = (props: EssaySearchBarProps) => {
                             name: { contains: query.toLowerCase().replace(' ', '_') }
                         }
                     }));
-                    console.log(query);
-                    console.log(data);
                     setFilteredData(data.data.listEssays.items);
                 } else {
                     setFilteredData([]);

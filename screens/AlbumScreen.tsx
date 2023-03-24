@@ -16,12 +16,9 @@ const AlbumScreen = () => {
   const [author, setAuthor] = useState(null)
 
   useEffect(() => {
-    console.log("whats up")
     const fetchAlbumDetails = async () => {
       try {
         const data = await API.graphql(graphqlOperation(getEssayAlbum, { id: albumId }))
-        console.log("---> ")
-        console.log(data.data.getEssayAlbum)
         setAlbum(data.data.getEssayAlbum)
       } catch (e) {
         console.log(e);
@@ -35,8 +32,6 @@ const AlbumScreen = () => {
 
     const fetchAuthorDetails = async () => {
         try {
-            console.log("hmmm")
-            console.log(album)
             const data = await API.graphql(graphqlOperation(getAuthor, { id: album.authorId }))
             setAuthor(data.data.getAuthor)
         } catch (e) {

@@ -27,8 +27,6 @@ const EssayCategory = (props: EssayCategoryProps) => {
         // }
       // }))
       const albums = data.data.listEssayAlbums.items.filter(album => album.categoryId == props.categoryID);
-      console.log("---")
-      console.log(albums.length)
 
       setTitles(essays.concat(albums));
     } 
