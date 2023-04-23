@@ -20,6 +20,7 @@ const PlayerWidget = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [duration, setDuration] = useState<number|null>(null);
   const [position, setPosition] = useState<number|null>(null);
+  const [visible, setVisible] = useState<boolean>(true);
 
   const { essayId } = useContext(AppContext);
 
@@ -82,9 +83,11 @@ const PlayerWidget = () => {
       return;
     }
     if (isPlaying) {
-      await sound.stopAsync();
+      await sound.pauseAsync();
+      setIsPlaying(false);
     } else {
       await sound.playAsync();
+      setIsPlaying(true);
     }
   }
 
@@ -101,31 +104,41 @@ const PlayerWidget = () => {
   }
 
   const onPress = () => {
-    RootNavigation.navigate('PlayScreen', { essayId: essay.id })
+    setVisible(false);
+    RootNavigation.navigate('PlayScreen', { 
+      essayId: essay.id, 
+      position: position, 
+      duration: duration,
+      sound: sound,
+    })
   }
 
   return (
-    <View style={styles.container}>
-      <View style={[styles.progress, { width: `${getProgress()}%`}]} />
-      <View style={styles.row}>
-        <Image source={{ uri: essay.imageUri }} style={styles.image} />
-        <View style={styles.rightContainer}>
-          <TouchableWithoutFeedback onPress={onPress}>
-            <View style={styles.nameContainer}>
-              <Text style={styles.name} numberOfLines={1}>{essay.name.replaceAll('_', ' ')}</Text>
-              <Text style={styles.author} numberOfLines={1}>{authorName}</Text>
-            </View>
-          </TouchableWithoutFeedback>
+    <View>{
+      visible ?
+        <View style={styles.container}>
+          <View style={[styles.progress, { width: `${getProgress()}%`}]} />
+          <View style={styles.row}>
+            <Image source={{ uri: essay.imageUri }} style={styles.image} />
+            <View style={styles.rightContainer}>
+              <TouchableWithoutFeedback onPress={onPress}>
+                <View style={styles.nameContainer}>
+                  <Text style={styles.name} numberOfLines={1}>{essay.name.replaceAll('_', ' ')}</Text>
+                  <Text style={styles.author} numberOfLines={1}>{authorName}</Text>
+                </View>
+              </TouchableWithoutFeedback>
 
-          <View style={styles.iconsContainer}>
-            <AntDesign name="hearto" size={30} color={"white"}/>
-            <TouchableOpacity onPress={onPlayPausePress}>
-              <FontAwesome name={isPlaying ? 'pause' : 'play'} size={30} color={"white"}/>
-            </TouchableOpacity>
+              <View style={styles.iconsContainer}>
+                <AntDesign name="hearto" size={30} color={"white"}/>
+                <TouchableOpacity onPress={onPlayPausePress}>
+                  <FontAwesome name={isPlaying ? 'pause' : 'play'} size={30} color={"white"}/>
+                </TouchableOpacity>
+              </View>
+            </View>
           </View>
         </View>
-      </View>
-    </View>
+      : null
+    }</View>
   )
 }
 

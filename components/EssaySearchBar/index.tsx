@@ -66,6 +66,7 @@ const EssaySearchBar = (props: EssaySearchBarProps) => {
                 keyExtractor={(item) => item.id}
                 // ItemSeparatorComponent={ItemSeperatorView}
                 renderItem={({item}) => <EssayListItem essay={item} author={item.author} />}
+                scrollEnabled={true}
             />
         </View>
     )

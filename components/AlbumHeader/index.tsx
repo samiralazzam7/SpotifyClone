@@ -8,17 +8,17 @@ export type AlbumHeaderProps = {
 }
 
 const AlbumHeader = (props: AlbumHeaderProps) => {
-    console.log("im here")
+
   const { album } = props;
   return (
     <View style={styles.container}>
       <Image source={{ uri: album.imageUri}} style={styles.image} />
       <Text style={styles.name}>{album.name.replaceAll('_', ' ')}</Text>
-      <TouchableOpacity>
+      {/* <TouchableOpacity>
         <View style={styles.button}>
           <Text style={styles.buttonText}>PLAY</Text>
         </View>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   )
 }

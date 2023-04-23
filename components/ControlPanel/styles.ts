@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   controls: {
-    padding: 5,
+    padding: 10,
   }
 })
 

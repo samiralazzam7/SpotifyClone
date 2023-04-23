@@ -17,11 +17,11 @@ const AuthorHeader = (props: AuthorHeaderProps) => {
         <Text style={styles.creator}>By {author.name}</Text>
         <Text style={styles.likes}>{album.numberOfLikes} Likes</Text>
       </View> */}
-      <TouchableOpacity>
+      {/* <TouchableOpacity>
         <View style={styles.button}>
           <Text style={styles.buttonText}>PLAY</Text>
         </View>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   )
 }

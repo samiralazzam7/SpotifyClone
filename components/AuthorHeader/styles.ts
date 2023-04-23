@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 30,
     fontWeight: 'bold',
-    textTransform: 'capitalize'
+    textTransform: 'capitalize',
+    marginBottom: 15,
   },
   creatorContainer: {
     flexDirection: "row",

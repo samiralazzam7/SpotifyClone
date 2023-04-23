@@ -4,7 +4,8 @@ const styles = StyleSheet.create({
     container: {
         position: 'absolute',
         top: 0,
-        width: '100%',
+        width: '80%',
+        height: 500,
     },
     searchBar: {
         width: '100%',
@@ -16,6 +17,9 @@ const styles = StyleSheet.create({
     },
     essayStyle: {
         padding: 10,
+        fontSize: 10,
+    },
+    results: {
     }
 })
 

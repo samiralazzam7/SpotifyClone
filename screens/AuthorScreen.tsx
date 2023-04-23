@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import { View, Text, FlatList } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import { View, Text, FlatList, BackHandler } from 'react-native';
+import { useRoute, useFocusEffect } from '@react-navigation/native';
 import { API, graphqlOperation } from 'aws-amplify';
 
 import EssayListItem from '../components/EssayListItem';
@@ -14,6 +14,18 @@ const AuthorScreen = () => {
 
   const [author, setAuthor] = useState(null)
 
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        console.log("hahahahahahha")
+      };
+
+      const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () => subscription.remove();
+    }, [])
+  );
+  
   useEffect(() => {
     const fetchAuthorDetails = async () => {
       try {

@@ -18,6 +18,7 @@ export default function App() {
   const colorScheme = useColorScheme();
 
   const [essayId, setEssayId] = useState<string|null>(null);
+  const [sound, setSound] = useState<Sound|null>(null);
 
   if (!isLoadingComplete) {
     return null;
@@ -26,6 +27,7 @@ export default function App() {
       <SafeAreaProvider>
         <AppContext.Provider value={{
           essayId,
+          sound,
           setEssayId: (id: string) => setEssayId(id),
         }}>
           <Navigation colorScheme={colorScheme} />

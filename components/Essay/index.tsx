@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   View,
   Image,
@@ -8,6 +8,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 import { Essay } from '../../types';
+import { AppContext } from '../../AppContext';
 
 export type EssayProps = {
   essay: Essay,
@@ -17,7 +18,10 @@ const EssayComponent = (props: EssayProps) => {
 
   const navigation = useNavigation();
 
+  const { setEssayId } = useContext(AppContext);
+
   const onPress = () => {
+    setEssayId(props.essay.id);
     navigation.navigate('AuthorScreen', { authorId: props.essay.authorId })
   }
 

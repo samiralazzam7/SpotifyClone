@@ -41,7 +41,7 @@ export default function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <EvilIcons name="search" size={30} style={{ marginBottom: -3 }} color={color} />,
         }}
       />
-      <BottomTab.Screen
+      {/* <BottomTab.Screen
         name="Your Library"
         component={TabTwoNavigator}
         options={{
@@ -54,7 +54,7 @@ export default function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ color }) => <FontAwesome5 name="spotify" size={30} style={{ marginBottom: -3 }} color={color} />,
         }}
-      />
+      /> */}
     </BottomTab.Navigator>
   );
 }
@@ -121,7 +121,7 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+        options={{ headerTitle: 'Search' }}
       />
     </TabTwoStack.Navigator>
   );

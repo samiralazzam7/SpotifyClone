@@ -1,16 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, BackHandler, Alert } from 'react-native';
+import Scrubber from 'react-native-scrubber';
 import { useRoute } from '@react-navigation/native';
 import { API, graphqlOperation } from 'aws-amplify';
 
 import { getEssay, getAuthor } from '../src/graphql/queries';
-import EssayComponent from '../components/Essay';
 import ControlPanel from '../components/ControlPanel';
 
 const PlayScreen = () => {
 
   const route = useRoute();
   const essayId = route.params.essayId;
+  const duration = route.params.duration;
+  const position = route.params.position;
+  const sound = route.params.sound;
 
   const [essay, setEssay] = useState(null);
   const [author, setAuthor] = useState(null);
@@ -50,7 +53,13 @@ const PlayScreen = () => {
       <Image source={{uri: essay.imageUri}} style={styles.image} />
       <Text style={styles.title}>{essay.name.replaceAll('_', ' ')}</Text>
       <Text style={styles.name}>{author.name.replaceAll('_', ' ')}</Text>
-      <ControlPanel />
+      <Scrubber 
+        value={position / 1000}
+        totalDuration={duration / 1000}
+        trackColor='#666'
+        scrubbedColor='#8d309b'
+      />
+      <ControlPanel sound={sound} position={position} />
     </View>
   )
 }

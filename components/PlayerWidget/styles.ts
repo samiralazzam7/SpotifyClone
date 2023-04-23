@@ -29,13 +29,14 @@ const styles = StyleSheet.create({
   nameContainer: {
     alignItems: 'left',
     overflow: 'hidden',
-    width: '60%',
+    width: 200,
   },
   iconsContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     width: 100,
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    paddingRight: 20,
   },
   name: {
     color: 'white',
